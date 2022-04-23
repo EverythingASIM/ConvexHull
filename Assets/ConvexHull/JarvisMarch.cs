@@ -252,7 +252,7 @@ public partial class ConvexHull
                 //b. for point calculate if the point lies Left or Right of Triangle
                 //this can be done by using the signedvolume of a tetrahedron
                 //IMPORTANT NOTE, this might result in floating point precision issue, which causes wrong values
-                double volume = SignedVolume(edge.StartPoint, edge.EndPoint, p, P[i]);
+                double volume = Vector2Extension.SignedVolume(edge.StartPoint, edge.EndPoint, p, P[i]);
 
                 //b. check and see what sides the point lies on the our triangle
                 //checking volume < 0 or volume > 0, CCW/CW doesnt not matter and is depends on the order of inputs to SignedVolume?
@@ -292,18 +292,6 @@ public partial class ConvexHull
             double area = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
 
             return area * area;
-        }
-
-        //SignedVolume are volumes that can be either positive or negative, depending on the winding
-        //depending on the orientation in space of the region whose volume is being measured.
-        //The volume is positive if 𝑑 is to the left of the plane defined by the triangle(𝑎, 𝑏, 𝑐).
-        //IMPORTANT NOTE, this might result in floating point precision issue, which causes wrong values
-        double SignedVolume(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
-        {
-            //first check if any points are same this will prevent possible floating point errors when doing dot and cross product
-            if (a == b || b == c || a == c) return 0;
-
-            return Vector3.Dot(a - d, Vector3.Cross(b - d, c - d)) / 6;
         }
     }
 }

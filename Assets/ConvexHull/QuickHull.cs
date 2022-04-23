@@ -89,7 +89,7 @@ public partial class ConvexHull
             int maxPointIndex = 0;
             for (int i = 0; i < points.Count; i++)
             {
-                float dist = Vector2Extension.Distance(P, Q, points[i]);
+                float dist = Vector2Extension.MaxDistance(points[i],P, Q);
                 if (dist > maxdist)
                 {
                     maxdist = dist;
