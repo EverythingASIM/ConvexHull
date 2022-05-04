@@ -18,6 +18,7 @@ Some i created from psudocode's, some is a c# conversion from an existing impeme
 # TODO
 - Implement kirkpatrick_seidel 2d convex hull
 - Implement Incremental convex hull
+- Implement Akl–Toussaint heuristic
 
 # Additional Convex Hull
 - Convex hull Aprox - https://github.com/nguy1708/Convex-Hull-Approximation
