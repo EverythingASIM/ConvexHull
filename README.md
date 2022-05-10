@@ -19,6 +19,7 @@ Some i created from psudocode's, some is a c# conversion from an existing impeme
 - Implement kirkpatrick_seidel 2d convex hull
 - Implement Incremental convex hull
 - Implement Akl–Toussaint heuristic
+- Implement Sklansky algorithm? incorrect but used in OpenCv
 
 # Additional Convex Hull
 - Convex hull Aprox - https://github.com/nguy1708/Convex-Hull-Approximation
