@@ -1,4 +1,4 @@
-# Convex Hull 2D/3D Algorithm Implementation in Unity 
+# Convex Hull 2D/3D Algorithm Implementation in Unity C#
 Some i created from psudocode's, some is a c# conversion from an existing impementation
 
 # Convex Hull using 2D points
