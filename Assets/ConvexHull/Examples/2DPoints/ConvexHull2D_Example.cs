@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ConvexHull2D_Example : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class ConvexHull2D_Example : MonoBehaviour
         JarvisMarch,
         GrahamScan,
         MonotoneChain,
+        Incremental,
         QuickHull2D,
         //KirkpatrickSeidel,
         ChanAlgorithm,
@@ -19,10 +22,20 @@ public class ConvexHull2D_Example : MonoBehaviour
     [SerializeField] int pointCount = 20;
     [SerializeField] GameObject prefab;
 
-    List<GameObject> points2d = new List<GameObject>();
+    List<GameObject> points2d = new();
     List<Vector2> drawpoints;
     void Start()
     {
+        Spawn();
+    }
+    void Spawn()
+    {
+        foreach (var point in points2d)
+        {
+            Destroy(point);
+        }
+        points2d.Clear();
+
         for (int i = 0; i < pointCount; i++)
         {
             points2d.Add(Instantiate(prefab));
@@ -31,6 +44,12 @@ public class ConvexHull2D_Example : MonoBehaviour
     }
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Space)) 
+        {
+            Spawn();
+        }
+
+
         List<Vector2> points = new List<Vector2>();
         foreach (GameObject go in points2d)
         {
@@ -57,6 +76,11 @@ public class ConvexHull2D_Example : MonoBehaviour
                     drawpoints = ConvexHull.MonotoneChain(points);
                     break;
                 }
+            case Algorithm.Incremental:
+                {
+                    drawpoints = ConvexHull.Incremental(points);
+                    break;
+                }
             case Algorithm.QuickHull2D:
                 {
                     drawpoints = ConvexHull.QuickHull2D(points);
@@ -72,6 +96,7 @@ public class ConvexHull2D_Example : MonoBehaviour
                     drawpoints = ConvexHull.ChanAlgorithm(points);
                     break;
                 }
+            
         }
     }
     void OnDrawGizmos()

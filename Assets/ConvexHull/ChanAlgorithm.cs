@@ -67,7 +67,6 @@ public partial class ConvexHull
             List<Vector2> convexhull = new List<Vector2>();
             convexhull.Add(subHulls[0][0]);
 
-            int hullIndex = 0;
             //initial search point set to (0, first point in the full hull) for tangent search purposes
             Vector2 p0 = new Vector2(0, convexhull[0].y);
 

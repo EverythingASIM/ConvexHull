@@ -721,11 +721,7 @@ public partial class ConvexHull
         }
     }
 
-    //TODO //ConvexHulls3D-Roger-Hernando.pdf cg-hull3d.pdf
-    public static List<Vector2> Incremental(List<Vector2> points)
-    {
-        return null;
-    }
+
 
     ///new convex hull algo
     ///https://github.com/nguy1708/Convex-Hull-Approximation/blob/master/convex-hull-approximation.pdf
