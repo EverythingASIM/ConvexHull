@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "asim.unity.extensions": {
+      "version": "0.2.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.com"
+    },
     "asim.unity.utils.geometry": {
       "version": "0.2.1",
       "depth": 0,

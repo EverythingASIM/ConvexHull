@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 using asim.unity.utils.geometry;
+using asim.unity.extensions;
 
 public partial class ConvexHull
 {

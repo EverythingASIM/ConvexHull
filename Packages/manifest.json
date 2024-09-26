@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "asim.unity.extensions": "0.2.2",
     "asim.unity.utils.geometry": "0.2.1",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.collab-proxy": "2.2.0",

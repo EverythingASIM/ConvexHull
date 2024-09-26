@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 
 using UnityEngine;
-using Random = UnityEngine.Random;
 
+[ExecuteInEditMode]
 public class ConvexHull2D_Example : MonoBehaviour
 {
     public enum Algorithm
@@ -17,46 +16,19 @@ public class ConvexHull2D_Example : MonoBehaviour
         ChanAlgorithm,
     }
 
+    [SerializeField] GameObject Points;
+
     public Algorithm algorithm = Algorithm.JarvisMarch;
 
-    [SerializeField] int pointCount = 20;
-    [SerializeField] GameObject prefab;
-
-    List<GameObject> points2d = new();
     List<Vector2> drawpoints;
-    void Start()
-    {
-        Spawn();
-    }
-    void Spawn()
-    {
-        foreach (var point in points2d)
-        {
-            Destroy(point);
-        }
-        points2d.Clear();
 
-        for (int i = 0; i < pointCount; i++)
-        {
-            points2d.Add(Instantiate(prefab));
-            points2d[i].transform.position = new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0);
-        }
-    }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) 
+        List<Vector2> points = new();
+        for (int i = 0; i < Points.transform.childCount; i++)
         {
-            Spawn();
-        }
-
-
-        List<Vector2> points = new List<Vector2>();
-        foreach (GameObject go in points2d)
-        {
-            if (go)
-            {
-                points.Add(go.transform.position);
-            }
+            var point = Points.transform.GetChild(i).transform.position;
+            points.Add(point);
         }
 
         switch (algorithm)
@@ -110,7 +82,7 @@ public class ConvexHull2D_Example : MonoBehaviour
             {
                 Vector2 start = drawpoints[i];
                 Vector2 end = drawpoints[(i + 1)];
-                Gizmos.DrawLine(new Vector3(start.x, start.y, 0), new Vector3(end.x, end.y, 0));
+                Gizmos.DrawLine(start, end);
             }
         }
         else
@@ -122,10 +94,10 @@ public class ConvexHull2D_Example : MonoBehaviour
             {
                 start = drawpoints[i];
                 end = drawpoints[(i + 1)];
-                Gizmos.DrawLine(new Vector3(start.x, start.y, 0), new Vector3(end.x, end.y, 0));
+                Gizmos.DrawLine(start, end);
             }
             start = drawpoints[0];
-            Gizmos.DrawLine(new Vector3(start.x, start.y, 0), new Vector3(end.x, end.y, 0));
+            Gizmos.DrawLine(start, end);
         }
     }
 }
